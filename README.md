@@ -1,2 +1,0 @@
-# dld
-not to copy
