@@ -1,0 +1,19 @@
+module demux1to8(y,s,a);
+output reg [0:7]y;
+input [2:0]s;
+input a;
+always @(*)
+begin 
+case(s)
+0: y ={a,7'b0000000};
+1: y ={1'b0,a,6'b000000};
+2: y ={2'b00,a,5'b00000};
+3: y ={3'b000,a,4'b0000};
+4: y={4'b0000,a,3'b000};
+5: y={5'b00000,a,2'b00};
+6: y={6'b000000,a,1'b0};
+7: y={7'b0000000,a};
+default: y=8'b00000000;
+endcase
+end
+endmodule

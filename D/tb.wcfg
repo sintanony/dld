@@ -1,0 +1,22 @@
+module dff_tb ();
+reg D,Clock;
+wire Q;
+dff g1 (D,Clock, Q);
+initial
+begin
+Clock=1'b0;
+forever #20 Clock=~Clock;
+end 
+initial 
+begin
+#0 D=1'b1;
+#50 D=1'b0;
+#40 D=1'b1;
+end
+initial 
+begin 
+$monitor($time, "Clock=%b, D=%b, Q=%b", Clock, D, Q); 
+end 
+initial 
+#200 $finish;
+endmodule

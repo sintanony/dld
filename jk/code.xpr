@@ -1,0 +1,19 @@
+module jk_flipflop (clk, rst_n, j,k, q, q_bar );
+input clk, rst_n, j,k;
+ output reg q, q_bar;
+ 
+ always@(posedge clk) 
+begin // for synchronous reset
+ if(!rst_n) 
+{q,q_bar} <= {1'b0,1'b1};
+ else 
+begin
+ case({j,k})
+ 2'b00: {q,q_bar} <= {q,q_bar}; // No change
+ 2'b01: {q,q_bar} <= {1'b0,1'b1}; // reset
+ 2'b10: {q,q_bar} <= {1'b1,1'b0}; // set
+ 2'b11: {q,q_bar} <= {q_bar,q}; // Toggle
+ endcase
+ end
+ end
+endmodule

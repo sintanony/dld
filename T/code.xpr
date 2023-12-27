@@ -1,0 +1,14 @@
+module tff (clk, rstn, t, q); 
+input clk,rstn,t;
+output reg q;
+ always @ (posedge clk or negedge rstn)
+begin 
+ if (!rstn) 
+ q <= 0; 
+ else 
+ if (t) 
+ q <= ~q; 
+ else 
+ q <= q; 
+ end 
+endmodule

@@ -1,0 +1,10 @@
+module FA_behave(a, b, cin, sum, carry);
+input a, b, cin;
+output sum, carry;
+wire sum, carry;
+always @ (aor b or cin)
+begin
+sum = a^b^cin;
+carry = (a&b)|(b&cin)|(a&cin);
+end
+endmodule

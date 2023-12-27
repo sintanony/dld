@@ -1,0 +1,22 @@
+module tb_decoder ( );
+reg [2:0] Data_in;
+wire [7:0] Data_out;
+decoder3to8 g1 (Data_in, Data_out );
+initial
+begin
+#0 Data_in = 3'b000; 
+#10 Data_in = 3'b001;
+#10 Data_in = 3'b010; 
+#10 Data_in = 3'b011;
+#10 Data_in = 3'b100;
+#10 Data_in = 3'b101; 
+#10 Data_in = 3'b110; 
+#10 Data_in = 3'b111; 
+end
+initial 
+begin
+$monitor($time, “Data_in=%b, Data_out=%b”, Data_in, Data_out);
+end
+initial
+#100 $finish;
+endmodule

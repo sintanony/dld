@@ -1,0 +1,21 @@
+module demux1to8_tb( );
+reg a;
+reg [2:0] s;
+wire [0:7] y;
+demux1to8 g1(y,s,a);
+initial 
+begin
+#0 a=1’b1; s=3’d0;
+#10 s=3’d1; 
+#10 s=3’d2; 
+#10 s=3’d3; 
+#10 s=3’d4; 
+#10 s=3’d5; 
+#10 s=3’d6; 
+#10 s=3’d7; 
+End
+initial
+$monitor ($time, "a = %b, s=%b, y=%b", a, s, y);
+initial 
+#100 $finish;
+endmodule

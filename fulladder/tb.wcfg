@@ -1,0 +1,20 @@
+module FA_Test( );
+reg a, b, cin;
+wire sum, carry;
+FA_behave g1(a,b,cin, sum,carry);
+initial
+begin
+#0 a=1'b0; b=1'b0; cin=1’b0;
+#10 a=1'b0; b=1'b0; cin=1’b1;
+#10 a=1'b0; b=1'b1; cin=1’b0;
+#10 a=1'b0; b=1'b1; cin=1’b1;
+#10 a=1'b1; b=1'b0; cin=1’b0;
+#10 a=1'b1; b=1'b0; cin=1’b1;
+#10 a=1'b1; b=1'b1; cin=1’b0;
+#10 a=1'b1; b=1'b1; cin=1’b1;
+end
+initial 
+$monitor ( $time, "a = %b, b = %b, cin=%b, sum = %b, carry = %b", a, b, cin, sum, carry);
+initial 
+#100 $finish;
+endmodule

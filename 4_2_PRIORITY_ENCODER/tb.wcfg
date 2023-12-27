@@ -1,0 +1,22 @@
+module PriorityEncoder_Test ( ) ;
+ reg [3:0] Y;
+wire [1:0] A;
+priority_encoderbehave g1 (.Y(Y), .A(A));
+initial 
+begin
+#0 Y = 0;
+#10 Y = 4'b0000;
+#10 Y = 4'b1000;
+#10 Y = 4'b0100;
+#10 Y = 4'b0010;
+#10 Y = 4'b0001;
+#10 Y = 4'b1010;
+#10 Y = 4'b1111;
+end 
+initial 
+begin
+$monitor("time=",$time, "A=%b : Y=%b",A,Y); 
+end 
+initial 
+#100 $finish;
+endmodule

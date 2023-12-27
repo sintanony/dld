@@ -1,0 +1,12 @@
+module dec2to4(din, dout);
+input [1:0] din;
+output reg [3:0] dout;
+always @ (din)
+case (din)
+ 0 : dout[0] = 1;
+ 1 : dout[1] = 1;
+ 2 : dout[2] = 1;
+ 3 : dout[3] = 1;
+ default : dout = 4’bxxxx;
+endcase
+endmodule

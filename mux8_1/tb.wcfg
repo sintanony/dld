@@ -1,0 +1,21 @@
+module mux8to1_tb( );
+reg [7:0] i;
+reg [2:0] s;
+wire y;
+mux8to1 g1(i, s, y);
+initial 
+begin
+#0 s=3’b000; i=8’b10101010;
+#10 s=3’b001; i=8’b10101010;
+#10 s=3’b010; i=8’b10101010;
+#10 s=3’b011; i=8’b10101010;
+#10 s=3’b100; i=8’b10101010;
+#10 s=3’b101; i=8’b10101010;
+#10 s=3’b110; i=8’b10101010;
+#10 s=3’b111; i=8’b10101010;
+end
+initial 
+$monitor ($time, "i = %b, s=%b, y=%b", i, s, y);
+initial 
+#100 $finish;
+endmodule

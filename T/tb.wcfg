@@ -1,0 +1,28 @@
+module tff_tb ( ); 
+ reg clk; 
+ reg rstn; 
+ reg t; 
+wire q;
+ 
+ tff g1 (clk, rstn, t,q);
+ 
+ initial
+begin
+clk=1'b0;
+forever #20 clk=~clk;
+end
+ 
+ initial
+begin 
+#0 rstn =0; t=0;
+#30 t=1;
+#30 rstn=1; t=0;
+#30 t=1;
+end
+initial 
+begin
+$monitor($time “clk=%b, rstnt=%b, t=%b, q=%b”, clk, rstn,t,q);
+end
+initial 
+#500 $finish;
+endmodule
